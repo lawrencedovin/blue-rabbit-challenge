@@ -12,44 +12,21 @@ const PersonList = () => {
         async function getPersons() {
             const results = await axios('https://6308a96a722029d9ddd5005f.mockapi.io/api/users');
             setPersons(results.data);
-            console.log(persons);
         }
         getPersons();
-        // axios.get(`https://6308a96a722029d9ddd5005f.mockapi.io/api/users`)
-        // .then(res => {
-        //     const data = res.data;
-        //     console.log(data);
-        //     console.log(persons);
-        //     setPersons(data);
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // })
-        // .finally(() => {
-        //     setLoading(false);
-        // })
     }, []);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //       const response = await fetch(`https://6308a96a722029d9ddd5005f.mockapi.io/api/users/`);
-    //       const newData = await response.json();
-    //       setPersons(newData);
-    //     };
-    
-    //     fetchData();
-    //   }, [persons]);
 
     if (persons) {
         return (
-            <div>
-                {/* {
+            <ul>
+                {
                     persons.map(person => (
-                        <Person person={person} />
+                        <li key={person.id}>
+                            <Person person={person}/>
+                        </li>
                     ))
-                } */}
-                <Person />
-            </div>
+                }
+            </ul>
         );
     }
     else {
