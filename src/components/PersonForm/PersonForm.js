@@ -1,7 +1,15 @@
 import React from "react";
 import "./PersonForm.css";
+import { client } from "../../utils/axiosClient";
 
 const PersonForm = () => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const addPerson = (firstName, lastName, image) => {
+
+    }
+  }
     return (
         // <form>
         //     <div className="input-group input-group-sm">
@@ -20,7 +28,7 @@ const PersonForm = () => {
               <div className="card border-0 shadow rounded-3 my-4">
                 <div className="card-body p-4 p-sm-5">
                   <h5 className="card-title text-center mb-5 fw-light fs-5">New Person Form</h5>
-                  <form>
+                  <formaxi>
                     <div className="form-floating mb-3">
                       <input type="text" className="form-control" id="firstNameInput" placeholder="First Name"/>
                       <label for="firstNameInput">First Name</label>
@@ -38,7 +46,7 @@ const PersonForm = () => {
                         <i className="fab fa-google me-2"></i> Confirm
                       </button>
                     </div>
-                  </form>
+                  </formaxi>
                 </div>
               </div>
             </div>
