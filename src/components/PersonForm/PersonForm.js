@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import "./PersonForm.css";
 import { client } from "../../utils/axiosClient";
 
@@ -24,6 +24,7 @@ const PersonForm = () => {
        })
        .then((response) => {
           setPosts([response.data, ...posts]);
+
        });
        setFirstName('');
        setLastName('');

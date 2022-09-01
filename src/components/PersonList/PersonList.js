@@ -1,18 +1,18 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, createContext} from "react";
 import "./PersonList.css";
 import axios from "axios";
 import Person from "../Person/Person";
+import { client } from "../../utils/axiosClient";
 
 const PersonList = () => {
     const [persons, setPersons] = useState([]);
-    const [loading, setLoading] = useState(false);
+    
+    async function getPersons() {
+        const results = await client.get();
+        setPersons(results.data);
+    }
 
     useEffect(() => {
-        setLoading(true);
-        async function getPersons() {
-            const results = await axios('https://6308a96a722029d9ddd5005f.mockapi.io/api/users');
-            setPersons(results.data);
-        }
         getPersons();
     }, []);
 
