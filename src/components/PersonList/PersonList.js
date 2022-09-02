@@ -21,7 +21,7 @@ const PersonList = () => {
             <ul>
                 {
                     persons.map(person => (
-                        <li key={person.id}>
+                        <li key={person.id} className="person__card">
                             <Person person={person}/>
                         </li>
                     ))
