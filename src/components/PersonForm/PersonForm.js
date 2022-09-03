@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import "./PersonForm.css";
 import { client } from "../../utils/axiosClient";
+import ModalAlert from "../ModalAlert/ModalAlert";
 
 const PersonForm = () => {
 
@@ -9,9 +10,23 @@ const PersonForm = () => {
   const [image, setImage] = useState('');
   const [posts, setPosts] = useState([]);
 
+  
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    setFirstName('');
+    setLastName('');
+    setImage('');
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('names', firstName, lastName, 'image', image);
+    openModal()
     addPerson(firstName, lastName, image);
   };
 
@@ -24,11 +39,7 @@ const PersonForm = () => {
        })
        .then((response) => {
           setPosts([response.data, ...posts]);
-
-       });
-       setFirstName('');
-       setLastName('');
-       setImage('');
+       })
  };
 
     return (
@@ -81,6 +92,7 @@ const PersonForm = () => {
               </div>
             </div>
           </div>
+          <ModalAlert firstName={firstName} lastName={lastName} image={image} openModal={openModal} closeModal={closeModal} modalIsOpen={modalIsOpen}/>
         </div>
     );
 }

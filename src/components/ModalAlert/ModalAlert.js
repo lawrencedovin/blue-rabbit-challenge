@@ -15,43 +15,25 @@ const customStyles = {
 
 
 
-function ModalAlert() {
+function ModalAlert({firstName, lastName, image, openModal, closeModal, modalIsOpen}) {
   let subtitle;
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      {/* <button onClick={openModal}>Open Modal</button> */}
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
+        <button onClick={closeModal}>X</button>
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>New Person Added!</h2>
+        <ul>
+          <li>First Name: {firstName}</li>
+          <li>Last Name: {lastName}</li>
+          <li>Image: {image}</li>
+        </ul>
       </Modal>
     </div>
   );

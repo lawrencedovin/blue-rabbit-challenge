@@ -34,7 +34,7 @@ function App() {
             <Route path="/dog/:id" element={<DogDetails />}></Route> */}
           </Routes>
       </BrowserRouter>
-      <ModalAlert />
+      {/* <ModalAlert /> */}
     </div>
   );
 }
