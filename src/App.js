@@ -20,6 +20,7 @@ import NavBar from './components/NavBar/NavBar';
 import PersonList from './components/PersonList/PersonList';
 import PersonForm from './components/PersonForm/PersonForm';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ModalAlert from './components/ModalAlert/ModalAlert';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/dog/:id" element={<DogDetails />}></Route> */}
           </Routes>
       </BrowserRouter>
+      <ModalAlert />
     </div>
   );
 }
